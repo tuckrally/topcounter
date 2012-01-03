@@ -1,0 +1,29 @@
+<h1>RackCount <%= @rack_count.id %></h1>
+<p>Initials: <%= @rack_count.initials %></p>
+<p>Rack Number: <%= @rack_count.rack %></p>
+<p>Comments: <%= @rack_count.comments %></p>
+<table>
+  <tr>
+    <th>Line Item ID</th>
+    <th>UPC</th>
+    <th>Description</th>
+    <th>Color</th>
+    <th>Size</th>
+    <th>Price</th>
+  </tr>
+<% @rack_count.line_items.each do |line_item| %>
+  <tr>
+    <td><%= line_item.id %></td>
+    <td><%= line_item.product.upc %></td>
+    <td><%= line_item.product.description %></td>
+    <td><%= line_item.product.color %></td>
+    <td><%= line_item.product.size %></td>
+    <td><%= line_item.product.price %></td>
+  </tr>
+<% end %>
+
+<%= simple_form_for @line_item do |f| %>
+  <%= f.input :product_id %>
+  <%= f.button :submit %>
+<% end %>
+</table>

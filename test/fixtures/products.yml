@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  upc: MyString
+  description: MyString
+  color: MyString
+  size: MyString
+  price: 1
+
+two:
+  upc: MyString
+  description: MyString
+  color: MyString
+  size: MyString
+  price: 1

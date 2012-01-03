@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  initials: MyString
+  rack: MyString
+  comments: MyText
+
+two:
+  initials: MyString
+  rack: MyString
+  comments: MyText
