@@ -1,3 +1,7 @@
+<% if flash[:errors] && !flash[:errors].empty? then %>
+	<h1><%= flash[:errors] %></h1>
+<% end %>
+
 <h1>RackCount <%= @rack_count.id %></h1>
 <p>Initials: <%= @rack_count.initials %></p>
 <p>Rack Number: <%= @rack_count.rack %></p>
@@ -22,8 +26,23 @@
   </tr>
 <% end %>
 
-<%= simple_form_for @line_item do |f| %>
-  <%= f.input :product_id %>
-  <%= f.button :submit %>
+<%= form_tag ("/rack_counts/#{@rack_count.id}/add_line_item") do %>
+  <%= text_field_tag :product_upc %>
+  <%= submit_tag :submit %>
 <% end %>
+
+<p>
+<h2><%= @rack_count.state %></h2>
+</p>
+
+<p>
+
+# Change the state of the rack_count to confirmed
+
+	<%= form_tag ("/rack_counts/#{@rack_count.id}/confirm") do %>
+	  <%= submit_tag :submit %>
+	<% end %>
+
+</p>
+
 </table>

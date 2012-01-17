@@ -1,7 +1,18 @@
 Topcounter::Application.routes.draw do
   
-  resources :rack_counts, :line_items, :products
-  root :to => 'rack_counts#new'
+  resources :line_items, :products
+
+  resources :rack_counts do
+    member do
+      post 'add_line_item'
+    end
+  end
+
+  root :to => 'rack_counts#index'
+  # This is where we start at the root
+  
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
