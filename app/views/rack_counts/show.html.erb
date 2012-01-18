@@ -2,47 +2,75 @@
 	<h1><%= flash[:errors] %></h1>
 <% end %>
 
-<h1>RackCount <%= @rack_count.id %></h1>
-<p>Initials: <%= @rack_count.initials %></p>
-<p>Rack Number: <%= @rack_count.rack %></p>
-<p>Comments: <%= @rack_count.comments %></p>
-<table>
+<table border="1" cellpadding="5">
   <tr>
-    <th>Line Item ID</th>
+    <th>Rack</th>
+    <th>Shelf</th>
+    <th>Initials</th>
+    <th># Items</th>
+  </tr>
+
+  <tr>
+    <td><%= @rack_count.rack %></td>
+    <td><%= @rack_count.shelf %></td>
+    <td><%= @rack_count.initials %></td>
+    <td><%= @rack_count.line_items.count%></td>
+
+  </tr>
+</table>
+
+<p><br />
+	
+	<p><h2>Scan Items on the current shelf</h2>
+	
+<table border="1" cellpadding="5">
+
+  <tr>
+	<td colspan='8'>
+	<%= form_tag ("/rack_counts/#{@rack_count.id}/add_line_item") do %>
+	  <%= text_field_tag :product_upc %>
+	  <%= submit_tag 'Add Item' %>
+	<% end %>
+	</td>
+  <tr>
+
+  <tr>
     <th>UPC</th>
+    <th>Department</th>
+    <th>Vendor</th>
     <th>Description</th>
     <th>Color</th>
     <th>Size</th>
     <th>Price</th>
+    <th>Remove</th>
   </tr>
 <% @rack_count.line_items.each do |line_item| %>
   <tr>
-    <td><%= line_item.id %></td>
     <td><%= line_item.product.upc %></td>
+    <td><%= line_item.product.department %></td>
+    <td><%= line_item.product.vendor %></td>
     <td><%= line_item.product.description %></td>
     <td><%= line_item.product.color %></td>
     <td><%= line_item.product.size %></td>
-    <td><%= line_item.product.price %></td>
+    <td align='right'><%= number_to_currency(line_item.product.price) %></td>
+    <td align='center' width='200'>
+	
+		<!--Delete button -->
+		<%= form_tag ("/rack_counts/#{@rack_count.id}/remove_line_item") do %>
+		  <%= hidden_field_tag :line_item_id, line_item.id %>
+		  <%= submit_tag 'delete' %>
+		<% end %>
+	
+	
+	</td>
   </tr>
 <% end %>
 
-<%= form_tag ("/rack_counts/#{@rack_count.id}/add_line_item") do %>
-  <%= text_field_tag :product_upc %>
-  <%= submit_tag :submit %>
-<% end %>
-
-<p>
-<h2><%= @rack_count.state %></h2>
-</p>
-
-<p>
-
-# Change the state of the rack_count to confirmed
-
-	<%= form_tag ("/rack_counts/#{@rack_count.id}/confirm") do %>
-	  <%= submit_tag :submit %>
-	<% end %>
-
-</p>
-
 </table>
+</p>
+
+<p>&nbsp;</p>
+
+<p><h2>Finish & Create Another</h2>
+
+<p><b> <%= link_to 'Create a new count', new_rack_count_path %> </b></p>

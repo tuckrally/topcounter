@@ -3,9 +3,15 @@ Topcounter::Application.routes.draw do
   resources :line_items, :products
 
   resources :rack_counts do
+
     member do
       post 'add_line_item'
+      post 'show'
+      post 'remove_line_item'
+      post 'new'
+
     end
+
   end
 
   root :to => 'rack_counts#index'

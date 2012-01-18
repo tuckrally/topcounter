@@ -11,6 +11,7 @@ class RackCountsController < ApplicationController
     @rack_count = RackCount.new
   end
 
+
   def create
     @rack_count = RackCount.new(params[:rack_count])
     if @rack_count.save
@@ -36,6 +37,25 @@ class RackCountsController < ApplicationController
     else
       flash[:errors] = "That product isn't in the system." 
     end
+
+    # Go back to the rack_count/id page
+    redirect_to rack_count_path(@rack_count)
+
+  end
+
+
+
+  def remove_line_item
+    
+        
+    # Find the rack count based on POST param
+    @rack_count = RackCount.find params[:id]
+      
+    # Get the line_item from the rack count POST param
+    @line_item = LineItem.find_by_id params[:line_item_id]
+        
+    # Delete the line_item and add product ID and rack count ID
+    @line_item.destroy
 
     # Go back to the rack_count/id page
     redirect_to rack_count_path(@rack_count)

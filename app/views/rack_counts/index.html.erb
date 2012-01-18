@@ -1,22 +1,45 @@
+<h2>Summary</h2>
 
-<h1>Racks</h1>
-
-<table cellspacing='10'>
+<table border='1' cellpadding='5'>
   <tr>
-    <th>Rack Number</th>
+    <th># Counts</th>
+    <th># of Items</th>
+    <th>Retail $ Counted</th>
+  </tr>
+
+  <tr>
+    <td><%= @rack_counts.count %></td>
+    <td></td>
+    <td>Retail $ Counted</td>
+  </tr>
+</table>
+
+<h2>Details</h2>
+
+<table border='1' cellpadding='5'>
+  <tr>
+    <th>Rack</th>
+    <th>Shelf</th>
     <th>Initials</th>
-    <th>Comments</th>
     <th># of Items</th>  
-    <th>Status</th>  
+    <th>Edit</th>  
   </tr>
 
 <% @rack_counts.each do |rack_count| %>
   <tr>
     <td><%= rack_count.rack %></td>
+    <td><%= rack_count.shelf %></td>
     <td><%= rack_count.initials %></td>
-    <td><%= rack_count.comments %></td>
     <td><%= rack_count.line_items.count%></td>
-    <td><%= rack_count.state%></td>
+
+	<td width="70" align="center">	
+		<!--Edit button -->
+		<%= form_tag (rack_count) do %>
+		  <%= submit_tag 'Edit' %>
+		<% end %>
+		
+		
+		</td>
   </tr>
 <% end %>
 
