@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120118033503) do
+ActiveRecord::Schema.define(:version => 20120120095630) do
 
   create_table "line_items", :force => true do |t|
     t.integer  "product_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20120118033503) do
     t.datetime "updated_at"
     t.string   "status",     :default => "draft"
     t.integer  "shelf"
+    t.string   "hand_count"
   end
 
 end

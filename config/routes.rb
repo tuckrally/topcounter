@@ -1,6 +1,12 @@
 Topcounter::Application.routes.draw do
   
-  resources :line_items, :products
+  resources :line_items
+  
+  resources :products do
+    member do
+      post 'show'
+    end
+  end
 
   resources :rack_counts do
 
@@ -9,6 +15,8 @@ Topcounter::Application.routes.draw do
       post 'show'
       post 'remove_line_item'
       post 'new'
+      get 'add_hand_count'
+      post 'update'
 
     end
 

@@ -11,7 +11,6 @@ class RackCountsController < ApplicationController
     @rack_count = RackCount.new
   end
 
-
   def create
     @rack_count = RackCount.new(params[:rack_count])
     if @rack_count.save
@@ -21,9 +20,27 @@ class RackCountsController < ApplicationController
     end
   end
 
+  def add_hand_count
+    @rack_count = RackCount.find params[:id]
+  end
+
+  def update
+  
+    # Find the rack count based on POST param
+     @rack_count = RackCount.find params[:id]
+
+     # Create the line_item and add product ID and rack count ID
+     @rack_count.update(:hand_count => @rack_count.hand_count)
+
+     # Go back to the rack_count/id page
+     redirect_to add_hand_count_rack_count_path(@rack_count)
+  
+  end
+
+
+
   def add_line_item
-    
-        
+      
     # Find the rack count based on POST param
     @rack_count = RackCount.find params[:id]
       
@@ -46,8 +63,7 @@ class RackCountsController < ApplicationController
 
 
   def remove_line_item
-    
-        
+           
     # Find the rack count based on POST param
     @rack_count = RackCount.find params[:id]
       
