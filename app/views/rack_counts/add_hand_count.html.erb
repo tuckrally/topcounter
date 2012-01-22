@@ -1,7 +1,21 @@
+<script>
+window.onload = function() {
+	document.getElementById('hand_count_initials').focus();
+	}
+</script>
+
+<h2>Add Hand Count</h2>
+
+<table cellpadding="5" border="1">
+<tr><td>Rack #</td><td><%= @rack_count.rack %></td></tr>
+<tr><td>Shelf #</td><td><%= @rack_count.shelf %></td></tr>
 <%= simple_form_for @rack_count do |f| %>
-  <%= f.input :initials %>
-  <%= f.input :rack %>
-  <%= f.input :shelf %>
-  <%= f.input :hand_count %>
-  <%= f.submit 'Save' %>
+<tr><td>Hand Counter Initials</td><td>  <%= f.input :hand_count_initials, :label => false, :input_html => { :size => 20} %></td></tr>
+<tr><td>Hand Count Quantity</td><td>  <%= f.input :hand_count, :label => false %></td></tr>
+<tr><td colspan="2" align="center"><%= f.submit 'Save' %></td></tr>
+</table>
+
+<p><%= link_to 'Back to All Counts', rack_counts_path %></p>
+
+
 <% end %>

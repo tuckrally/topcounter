@@ -1,0 +1,22 @@
+<h2>Shelves where hand count does not equal scan count</h2>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Rack</th>
+    <th>Shelf</th>
+    <th>Hand Count</th>
+    <th>Scan Count</th>
+  </tr>
+
+  <% @rack_count_diff.each do |rack_count| %>
+  <tr>
+    <td><%= rack_count.rack %></td>
+    <td><%= rack_count.shelf %></td>
+
+    <td><%= link_to rack_count.hand_count.nil? ? "Add" : rack_count.hand_count, add_hand_count_rack_count_path(rack_count) %></td>
+
+    <td><%= link_to rack_count.line_items.count, rack_count_path(rack_count) %></td>
+  </tr>
+  <% end %>
+
+</table>
