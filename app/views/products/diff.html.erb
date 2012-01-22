@@ -17,12 +17,12 @@
 
   <% @products_diff.each do |product| %>
   <tr>
-    <td><%= link_to product.upc, product_path(product) %></td>
+    <td><p class="barcode_font">*<%= product.upc %>*</p></td>
     <td align='right'><%= (product.line_items.count + product.on_customer_order_qty) %></td>
     <td align='right'><%= product.on_hand_qty %></td>
     <td><%= product.department %></td>
     <td><%= product.vendor %></td>
-    <td><%= product.description %></td>
+    <td><%= link_to product.description, product_path(product) %></td>
     <td><%= product.color %></td>
     <td><%= product.size %></td>
     <td align='right'><%= number_to_currency(product.price) %></td>
