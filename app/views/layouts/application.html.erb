@@ -8,6 +8,13 @@
 </head>
 <body padding-top: 40px;>
 
+<%= link_to 'Counts List', rack_counts_path %> | 
+<%= link_to 'New Count', new_rack_count_path %> | 
+<%= link_to 'Hand / Scan Diff', diff_rack_counts_path %> | 
+<%= link_to 'Products', products_path %> |
+<%= link_to 'Product Diff', diff_products_path %>
+<hr />
+
 <%= yield %>
 
 </body>

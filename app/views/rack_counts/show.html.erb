@@ -1,3 +1,9 @@
+<script>
+window.onload = function() {
+	document.getElementById('product_upc').focus();
+	}
+</script>
+
 <% if flash[:errors] && !flash[:errors].empty? then %>
 	<h1><%= flash[:errors] %></h1>
 <% end %>
@@ -7,7 +13,8 @@
     <th>Rack</th>
     <th>Shelf</th>
     <th>Initials</th>
-    <th># Items</th>
+    <th># Scan Count</th>
+    <th># Hand Count</th>
   </tr>
 
   <tr>
@@ -15,6 +22,7 @@
     <td><%= @rack_count.shelf %></td>
     <td><%= @rack_count.initials %></td>
     <td><%= @rack_count.line_items.count%></td>
+    <td><%= @rack_count.hand_count%></td>
 
   </tr>
 </table>

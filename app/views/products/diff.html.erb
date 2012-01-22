@@ -1,0 +1,35 @@
+<h2>Product Details</h2>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>UPC</th>
+    <th>Corrected OnHandCount</th>
+    <th>Previous OnHandCount</th>
+    <th>Department</th>
+    <th>Vendor</th>
+    <th>Description</th>
+    <th>Color</th>
+    <th>Size</th>
+    <th>Price</th>
+    <th># On Cust Order</th>
+    <th># Scanned</th>
+  </tr>
+
+  <% @products_diff.each do |product| %>
+  <tr>
+    <td><%= link_to product.upc, product_path(product) %></td>
+    <td align='right'><%= (product.line_items.count + product.on_customer_order_qty) %></td>
+    <td align='right'><%= product.on_hand_qty %></td>
+    <td><%= product.department %></td>
+    <td><%= product.vendor %></td>
+    <td><%= product.description %></td>
+    <td><%= product.color %></td>
+    <td><%= product.size %></td>
+    <td align='right'><%= number_to_currency(product.price) %></td>
+    <td align='right'><%= product.on_customer_order_qty %></td>
+    <td align='right'><%= product.line_items.count %></td>
+
+  </tr>
+  <% end %>
+
+</table>

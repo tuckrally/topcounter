@@ -3,21 +3,21 @@ Topcounter::Application.routes.draw do
   resources :line_items
   
   resources :products do
-    member do
-      post 'show'
-    end
+    collection do
+      get 'diff'        
+    end      
   end
 
   resources :rack_counts do
 
+    collection do
+      get 'diff'        
+    end      
+
     member do
       post 'add_line_item'
-      post 'show'
       post 'remove_line_item'
-      post 'new'
       get 'add_hand_count'
-      post 'update'
-
     end
 
   end

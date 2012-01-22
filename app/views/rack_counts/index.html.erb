@@ -3,14 +3,14 @@
 <table border='1' cellpadding='5'>
   <tr>
     <th># Counts</th>
-    <th># of Items</th>
+    <th>Scanned Items</th>
     <th>Retail $ Counted</th>
   </tr>
 
   <tr>
     <td><%= @rack_counts.count %></td>
-    <td></td>
-    <td>Retail $ Counted</td>
+    <td><%= @line_items_overall_sum %></td>
+    <td><%= number_to_currency(@product_price_overall_sum) %></td>
   </tr>
 </table>
 
@@ -21,8 +21,8 @@
     <th>Rack</th>
     <th>Shelf</th>
     <th>Initials</th>
-    <th># of Items</th>  
-    <th>Edit</th>  
+    <th>Hand Count</th>  
+    <th>Scan Count</th>  
   </tr>
 
 <% @rack_counts.each do |rack_count| %>
@@ -30,16 +30,8 @@
     <td><%= rack_count.rack %></td>
     <td><%= rack_count.shelf %></td>
     <td><%= rack_count.initials %></td>
-    <td><%= rack_count.line_items.count%></td>
-
-	<td width="70" align="center">	
-		<!--Edit button -->
-		<%= form_tag (rack_count) do %>
-		  <%= submit_tag 'Edit' %>
-		<% end %>
-		
-		
-		</td>
+    <td><%= link_to rack_count.hand_count.nil? ? "Add" : rack_count.hand_count, add_hand_count_rack_count_path(rack_count) %></td>
+    <td><%= link_to rack_count.line_items.count, rack_count_path(rack_count) %></td>
   </tr>
 <% end %>
 
