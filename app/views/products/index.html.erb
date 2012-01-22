@@ -21,10 +21,10 @@
 
   <% @products.each do |product| %>
   <tr>
-    <td><%= link_to product.upc, product_path(product) %></td>
+    <td><p class="barcode_font">*<%= product.upc %>*</p></td>
     <td><%= product.department %></td>
     <td><%= product.vendor %></td>
-    <td><%= product.description %></td>
+    <td><%= link_to product.description, product_path(product) %></td>
     <td><%= product.color %></td>
     <td><%= product.size %></td>
     <td align='right'><%= number_to_currency(product.price) %></td>

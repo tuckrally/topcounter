@@ -34,3 +34,4 @@ end
 gem 'pg'
 gem 'simple_form'
 gem 'less-rails-bootstrap'
+gem 'roo'

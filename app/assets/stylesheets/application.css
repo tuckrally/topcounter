@@ -5,3 +5,13 @@
  *= require_self
  *= require_tree . 
 */
+
+@font-face {
+	font-family: 'free3of9';
+	src: url(/assets/c39hrp24dhtt.ttf);
+}
+
+p.barcode_font {
+	font-family: 'free3of9';
+	font-size: 48px;
+}
