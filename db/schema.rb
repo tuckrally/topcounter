@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120121225547) do
+ActiveRecord::Schema.define(:version => 20120122032021) do
 
   create_table "line_items", :force => true do |t|
     t.integer  "product_id"
@@ -35,14 +35,15 @@ ActiveRecord::Schema.define(:version => 20120121225547) do
   end
 
   create_table "rack_counts", :force => true do |t|
-    t.string   "initials"
-    t.string   "rack"
+    t.string   "scan_count_initials"
     t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status",     :default => "draft"
+    t.string   "status",              :default => "draft"
     t.integer  "shelf"
     t.integer  "hand_count"
+    t.integer  "rack"
+    t.string   "hand_count_initials"
   end
 
 end

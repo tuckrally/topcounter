@@ -8,28 +8,17 @@ window.onload = function() {
 	<h1><%= flash[:errors] %></h1>
 <% end %>
 
-<table border="1" cellpadding="5">
-  <tr>
-    <th>Rack</th>
-    <th>Shelf</th>
-    <th>Initials</th>
-    <th># Scan Count</th>
-    <th># Hand Count</th>
-  </tr>
+<p><h2>Summary</h2>
 
-  <tr>
-    <td><%= @rack_count.rack %></td>
-    <td><%= @rack_count.shelf %></td>
-    <td><%= @rack_count.initials %></td>
-    <td><%= @rack_count.line_items.count%></td>
-    <td><%= @rack_count.hand_count%></td>
-
-  </tr>
+<table cellpadding="5" border="1">
+<tr><td>Rack</td><td><%= @rack_count.rack %></td></tr>
+<tr><td>Shelf</td><td><%= @rack_count.shelf %></td></tr>
+<tr><td># Items</td><td><%= @rack_count.line_items.count %></td></tr>
+<%= simple_form_for @rack_count do |f| %>
+<tr><td>Counter Initials</td><td><table><tr><td><%= f.input :scan_count_initials, :label => false, :input_html => { :size => 7} %></td><td><%= f.submit 'Save' %><% end %></td></tr></table></td></tr>
 </table>
 
-<p><br />
-	
-	<p><h2>Scan Items on the current shelf</h2>
+<p><h2>Scan Items</h2>
 	
 <table border="1" cellpadding="5">
 
@@ -76,9 +65,3 @@ window.onload = function() {
 
 </table>
 </p>
-
-<p>&nbsp;</p>
-
-<p><h2>Finish & Create Another</h2>
-
-<p><b> <%= link_to 'Create a new count', new_rack_count_path %> </b></p>

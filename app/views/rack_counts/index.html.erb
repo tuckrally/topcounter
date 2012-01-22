@@ -10,7 +10,7 @@
   <tr>
     <td><%= @rack_counts.count %></td>
     <td><%= @line_items_overall_sum %></td>
-    <td><%= number_to_currency(@product_price_overall_sum) %></td>
+    <td align="right"><%= number_to_currency(@product_price_overall_sum) %></td>
   </tr>
 </table>
 
@@ -20,22 +20,27 @@
   <tr>
     <th>Rack</th>
     <th>Shelf</th>
-    <th>Initials</th>
-    <th>Hand Count</th>  
+    <th>Scan Count Initials</th>
     <th>Scan Count</th>  
+    <th>Hand Count</th>  
+    <th>Hand Count Initials</th>  
   </tr>
 
 <% @rack_counts.each do |rack_count| %>
   <tr>
     <td><%= rack_count.rack %></td>
     <td><%= rack_count.shelf %></td>
-    <td><%= rack_count.initials %></td>
-    <td><%= link_to rack_count.hand_count.nil? ? "Add" : rack_count.hand_count, add_hand_count_rack_count_path(rack_count) %></td>
+    <td><%= rack_count.scan_count_initials %></td>
     <td><%= link_to rack_count.line_items.count, rack_count_path(rack_count) %></td>
+    <td><%= link_to rack_count.hand_count.nil? ? "Add" : rack_count.hand_count, add_hand_count_rack_count_path(rack_count) %></td>
+    <td><%= rack_count.hand_count_initials %></td>
   </tr>
 <% end %>
 
+<tr><td><%= simple_form_for @rack_count do |f| %><%= f.input :rack, :label => false, :input_html => { :size => 3} %></td><td><%= f.input :shelf, :label => false, :input_html => { :size => 3} %></td><td colspan="4"><%= f.submit 'Add New' %><% end %> &nbsp; <% if flash[:errors] && !flash[:errors].empty? then %>
+	<font style="color:red"><b><%= flash[:errors] %></b></font>
+<% end %> </td></tr></table>
+
 </table>
 
-<p><b> <%= link_to 'Create a new rack', new_rack_count_path %> </b></p>
-
+<p>* = Required</p>

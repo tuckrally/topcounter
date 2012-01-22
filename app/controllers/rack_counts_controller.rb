@@ -1,6 +1,6 @@
 class RackCountsController < ApplicationController
   def index
-    @rack_counts = RackCount.all
+    @rack_counts = RackCount.all(:order => "rack, shelf ASC")
     
     @line_items_overall_sum = LineItem.count
       
@@ -8,6 +8,7 @@ class RackCountsController < ApplicationController
 
     @product_price_overall_sum = @product_price_list_of_sum.map(&:price_sum).map(&:to_f).inject(:+)
       
+    @rack_count = RackCount.new
   end
   
   def show
@@ -30,14 +31,12 @@ class RackCountsController < ApplicationController
 
         if @rack_count.save
           redirect_to rack_count_path(@rack_count)
-        else
-          redirect_to new_rack_count_path
         end
-
+        
       else
-
+        flash[:errors] = "That rack/shelf is already in the system."
+        redirect_to rack_counts_path        
       end  
-
 
 
   end
