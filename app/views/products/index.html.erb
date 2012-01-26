@@ -19,6 +19,7 @@
     <th>$ Retail Sum</th>
   </tr>
 
+  <%= paginate @products %>
   <% @products.each do |product| %>
   <tr>
     <td><p class="barcode_font">*<%= product.upc %>*</p></td>

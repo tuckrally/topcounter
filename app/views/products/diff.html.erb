@@ -15,6 +15,7 @@
     <th># Scanned</th>
   </tr>
 
+  <%= paginate @products_diff %>
   <% @products_diff.each do |product| %>
   <tr>
     <td><p class="barcode_font">*<%= product.upc %>*</p></td>
