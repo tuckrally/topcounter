@@ -1,6 +1,8 @@
-<h2>Product Details</h2>
+<%= paginate @products_diff %>
 
-<table border="1" cellpadding="5">
+<h1 align='center'>Product Differences - Page <%= @current_page %></h1>
+
+<table id="hor-minimalist-b">
   <tr>
     <th>UPC</th>
     <th>Current OnHandCount</th>
@@ -15,20 +17,19 @@
     <th># Scanned</th>
   </tr>
 
-  <%= paginate @products_diff %>
   <% @products_diff.each do |product| %>
   <tr>
     <td><p class="barcode_font">*<%= product.upc %>*</p></td>
-    <td align='right'><%= (product.line_items.count + product.on_customer_order_qty) %></td>
-    <td align='right'><%= product.on_hand_qty %></td>
+    <td align='center' class='large'><%= (product.line_items.count + product.on_customer_order_qty) %></td>
+    <td align='center' class='large'><%= product.on_hand_qty %></td>
     <td><%= product.department %></td>
     <td><%= product.vendor %></td>
     <td><%= link_to product.description, product_path(product) %></td>
     <td><%= product.color %></td>
     <td><%= product.size %></td>
-    <td align='right'><%= number_to_currency(product.price) %></td>
-    <td align='right'><%= product.on_customer_order_qty %></td>
-    <td align='right'><%= product.line_items.count %></td>
+    <td align='center' class='large'><%= number_to_currency(product.price) %></td>
+    <td align='center' class='large'><%= product.on_customer_order_qty %></td>
+    <td align='center' class='large'><%= product.line_items.count %></td>
 
   </tr>
   <% end %>

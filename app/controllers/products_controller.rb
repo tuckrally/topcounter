@@ -28,7 +28,8 @@ class ProductsController < ApplicationController
     
     # ITERATE OVER LINE ITEMS PER PRODUCT IN SQL
     @products_diff = Product.where("coalesce((select sum(1) from line_items where line_items.product_id = products.id), 0) != (products.on_hand_qty - products.on_customer_order_qty)").page(params[:page]).per(100)
-
+  
+    @current_page = params[:page] ? params[:page] : 1
     # OLD ITERATIVE APPROACH
     # Go through all products, for each product do this block - if you find a product where l i count not equal then put the product into the array products_diff
     #Product.all.each do |product|
