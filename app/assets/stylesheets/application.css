@@ -15,3 +15,24 @@ p.barcode_font {
 	font-family: 'free3of9';
 	font-size: 48px;
 }
+
+body {
+	font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif; background-color: transparent; color: #333; -webkit-font-smoothing: antialiased;
+}
+
+.nav {
+	font-size: 18px;
+}
+
+.flash {
+    text-align: center;
+    padding: .6em;
+    margin: 0 auto .5em;
+    clear: both;
+	font-size: 36px;
+}
+
+.flash.error {
+    border: thin solid #8b0000;
+    background: #ffc0cb;
+}

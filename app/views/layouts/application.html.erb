@@ -8,12 +8,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body padding-top: 40px;>
-<%= image_tag 'john_head.jpg' %>
-<%= link_to 'All Counts', rack_counts_path %> | 
-<%= link_to 'Hand vs. Scan Count', diff_rack_counts_path %> | 
-<%= link_to 'Products', products_path %> |
-<%= link_to 'Products to adjust', diff_products_path %>
+  <div class="nav">
+    <%= image_tag 'john_head.jpg' %>
+    <%= link_to 'All Counts', rack_counts_path %> | 
+    <%= link_to 'Hand vs. Scan Count', diff_rack_counts_path %> | 
+    <%= link_to 'Products', products_path %> |
+    <%= link_to 'Products to Adjust', diff_products_path %>
+  </div>
 <hr />
+
+<% if flash[:errors] && !flash[:errors].empty? then %>
+	<div class="flash error"><%= flash[:errors] %></div>
+<% end %>
 
 <%= yield %>
 

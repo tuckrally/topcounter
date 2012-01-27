@@ -1,7 +1,3 @@
-<% if flash[:errors] && !flash[:errors].empty? then %>
-	<h1><%= flash[:errors] %></h1>
-<% end %>
-
 <h2>New Scan Count</h2>
 
 <%= simple_form_for @rack_count do |f| %>
