@@ -11,7 +11,8 @@ Topcounter::Application.routes.draw do
   resources :rack_counts do
 
     collection do
-      get 'diff'        
+      get 'diff'
+      get 'import_racks'
     end      
 
     member do

@@ -18,6 +18,24 @@ class RackCountsController < ApplicationController
   def new
     @rack_count = RackCount.new
   end
+  
+  def import_racks
+    if params[:key] && params[:key] == "evan"
+      data = Excel.new('../inventory_rack_layout.xls')
+      data.default_sheet = data.sheets.index('Sheet1') + 1
+
+      shelf_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+      2.upto(data.last_row) do |line|
+        rack_number = data.cell(line, 'A')
+        shelf_count = data.cell(line, 'B')
+
+        shelf_count.to_i.times do |i|
+          puts "Creating Rack #{rack_number.to_i} with Shelf #{shelf_list[i]}"
+          rack = RackCount.create(:rack => rack_number.to_i, :shelf => shelf_list[i])
+        end
+      end
+    end
+  end
 
   def create
 
