@@ -1,0 +1,21 @@
+<h1>Dashboard</h1>
+
+<table border='1' cellpadding='5'>
+  <tr>
+    <th>Shelves Hand Counted</th>
+    <th>Shelves Scan Counted</th>
+    <th>Items Scanned</th>
+    <th>Retail $ Counted</th>
+    <th>Hand vs Scan Discrepancy Count</th>
+    <th>Product Discrepancy Count</th>
+  </tr>
+
+  <tr>
+    <td><%= @shelves_hand_counted %></td>
+    <td><%= @shelves_scan_counted %></td>
+    <td><%= @line_items_overall_sum %></td>
+    <td><%= @product_price_overall_sum %></td>
+    <td><%= @rack_diff_count %></td>
+    <td><%= @products_diff_count %></td>
+  </tr>
+</table>

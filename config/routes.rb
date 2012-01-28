@@ -1,6 +1,6 @@
 Topcounter::Application.routes.draw do
   
-  resources :line_items
+  resources :line_items, :dashboards
   
   resources :products do
     collection do
