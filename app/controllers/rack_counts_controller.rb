@@ -2,11 +2,11 @@ class RackCountsController < ApplicationController
   def index
     @rack_counts = RackCount.all(:order => "rack, shelf ASC")
     
-    @line_items_overall_sum = LineItem.count
+    #@line_items_overall_sum = LineItem.count
       
-    @product_price_list_of_sum = Product.select("(select sum(1) from line_items where product_id = products.id) * price as price_sum").where("(select sum(1) from line_items where product_id = products.id) is not null")
+    #@product_price_list_of_sum = Product.select("(select sum(1) from line_items where product_id = products.id) * price as price_sum").where("(select sum(1) from line_items where product_id = products.id) is not null")
 
-    @product_price_overall_sum = @product_price_list_of_sum.map(&:price_sum).map(&:to_f).inject(:+)
+    #@product_price_overall_sum = @product_price_list_of_sum.map(&:price_sum).map(&:to_f).inject(:+)
       
     @rack_count = RackCount.new
   end
