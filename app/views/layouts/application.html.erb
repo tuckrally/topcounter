@@ -9,7 +9,7 @@
 </head>
 <body padding-top: 40px;>
   <div class="nav">
-    <%= image_tag 'john_head.jpg' %>
+    <%= image_tag 'rocky_head.jpg' %>
     <%= link_to 'All Counts', rack_counts_path %> | 
     <%= link_to 'Hand vs. Scan Count', diff_rack_counts_path %> | 
     <%= link_to 'Products', products_path %> |
@@ -19,7 +19,11 @@
 <hr />
 
 <% if flash[:errors] && !flash[:errors].empty? then %>
-	<div class="flash error"><%= flash[:errors] %></div>
+	<div class="flash error">  
+    <%= image_tag 'rocky_no.jpg' %>
+    <%= flash[:errors] %>
+    <%= image_tag 'rocky_no.jpg' %>
+  </div>
 <% end %>
 
 <%= yield %>

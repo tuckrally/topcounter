@@ -99,7 +99,7 @@ class RackCountsController < ApplicationController
     if !@product.nil?
       @rack_count.line_items.create(:product_id => @product.id)
     else
-      flash[:errors] = "That product isn't in the system." 
+      flash[:errors] = "Rocky Says: That product isn't in the system." 
     end
 
     # Go back to the rack_count/id page
