@@ -1,6 +1,6 @@
 class RackCountsController < ApplicationController
   def index
-    @rack_counts = RackCount.all(:order => "rack, shelf ASC")
+    @rack_counts = RackCount.order("rack, shelf ASC")
     
     #@line_items_overall_sum = LineItem.count
       
@@ -86,10 +86,15 @@ class RackCountsController < ApplicationController
 
 
 
-  def add_line_item
-      
+  def add_line_item  
     # Find the rack count based on POST param
     @rack_count = RackCount.find params[:id]
+    
+     if params[:product_upc].empty?
+      flash[:errors] = "Rocky Says: No no. Must enter a UPC!"
+      redirect_to rack_count_path(@rack_count)
+      return false
+    end
       
     # Get the product based on UPC from the rack count POST param
     @product = Product.find_by_upc params[:product_upc]

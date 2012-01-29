@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   host: localhost
-  database: topcounter_dev
+  database: topcounter_snapshot
   username: topcounter
   password: topcounter123
   pool: 5

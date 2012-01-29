@@ -16,7 +16,7 @@ window.onload = function() {
 
 <p><h2>Scan Items</h2>
 	
-<table border="1" cellpadding="5">
+<table border="1" cellpadding="5" width="100%">
 
   <tr>
 	<td colspan='8'>
@@ -37,8 +37,12 @@ window.onload = function() {
     <th>Price</th>
     <th>Remove</th>
   </tr>
-<% @rack_count.line_items.each do |line_item| %>
-  <tr>
+<% @rack_count.line_items.sort{|a,b|b.created_at <=> a.created_at}.each_with_index do |line_item, i| %>
+  <tr 
+    <% if i == 0 %>
+      class="recently_entered"
+    <% end %>
+  >
     <td><%= line_item.product.upc %></td>
     <td><%= line_item.product.department %></td>
     <td><%= line_item.product.vendor %></td>

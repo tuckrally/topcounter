@@ -43,3 +43,7 @@ body {
 #hor-minimalist-b tbody tr:hover td{color:#009;}
 
 .large{font-size:20px;}
+.recently_entered{
+	font-size: 18px;
+	background: #66FF99;
+}
