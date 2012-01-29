@@ -4,14 +4,24 @@ window.onload = function() {
 	}
 </script>
 
-<p><h2>Summary</h2>
-
-<table cellpadding="5" border="1">
+<h2>Summary</h2>
+<table border="1" cellpadding="5">
 <tr><td>Rack</td><td><%= @rack_count.rack %></td></tr>
 <tr><td>Shelf</td><td><%= @rack_count.shelf %></td></tr>
 <tr><td># Items</td><td><%= @rack_count.line_items.count %></td></tr>
 <%= simple_form_for @rack_count do |f| %>
-<tr><td>Counter Initials</td><td><table><tr><td><%= f.input :scan_count_initials, :label => false, :input_html => { :size => 7} %></td><td><%= f.submit 'Save' %><% end %></td></tr></table></td></tr>
+  <tr>
+    <td>Scanner Initials</td>
+    <td>
+      <table>
+        <tr>
+          <td><%= f.input :scan_count_initials, :label => false, :input_html => { :size => 7} %></td>
+          <td><%= f.submit 'Save' %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+<% end %>
 </table>
 
 <p><h2>Scan Items</h2>
@@ -43,7 +53,7 @@ window.onload = function() {
       class="recently_entered"
     <% end %>
   >
-    <td><%= line_item.product.upc %></td>
+    <td><%= link_to line_item.product.upc, product_path(line_item.product) %></td>
     <td><%= line_item.product.department %></td>
     <td><%= line_item.product.vendor %></td>
     <td><%= line_item.product.description %></td>

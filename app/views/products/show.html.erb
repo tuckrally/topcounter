@@ -1,6 +1,6 @@
 <h2>UPC <%= @product.upc %></h2>
 
-<table border="1" cellpadding="5">
+<table border="1" cellpadding="5" width="100%">
   <tr>
     <th>UPC</th>
     <th>Department</th>
@@ -32,7 +32,22 @@
    	<td align='right'><%= (@product.on_hand_qty - @product.on_customer_order_qty) - @product.line_items.count %></td>
     <td align='right'><%= number_to_currency(@product.line_items.count * @product.price) %></td>
   </tr>
+</table>
 
+<h2>Inventory Location</h2>
+<table border="1" cellpadding="5" width="100%">
+  <tr>
+    <th>Rack</th>
+    <th>Shelf</th>
+    <th>Quantity</th>
+  </tr>
+  <% @product_locations.each do |loc| %>
+    <tr>
+      <td><%= link_to loc.rack, rack_count_path(loc.rack_count_id) %></td>
+      <td><%= loc.shelf %></td>
+      <td><%= loc.item_count %></td>
+    </tr>
+  <% end %>
 </table>
 
 <p><%= link_to 'Back to Products', products_path %></p>

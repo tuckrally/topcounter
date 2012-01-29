@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   
   def show
     @product = Product.find params[:id]
+    @product_locations = Product.where(:id => params[:id]).joins(:rack_counts).group("rack_counts.id, rack_counts.rack, rack_counts.shelf").select("rack_counts.id as rack_count_id, rack_counts.rack, rack_counts.shelf, sum(1) as item_count")
   end
   
   def new

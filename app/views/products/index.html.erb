@@ -1,8 +1,6 @@
-
-
 <h2>Product Details</h2>
 
-<table border="1" cellpadding="5">
+<table border="1" cellpadding="5" width="100%">
   <tr>
     <th>UPC</th>
     <th>Department</th>
@@ -21,23 +19,22 @@
 
   <%= paginate @products %>
   <% @products.each do |product| %>
-  <tr>
-    <td><p class="barcode_font">*<%= product.upc %>*</p></td>
-    <td><%= product.department %></td>
-    <td><%= product.vendor %></td>
-    <td><%= link_to product.description, product_path(product) %></td>
-    <td><%= product.color %></td>
-    <td><%= product.size %></td>
-    <td align='right'><%= number_to_currency(product.price) %></td>
-    <td align='right'><%= product.on_hand_qty %></td>
-    <td align='right'><%= product.on_customer_order_qty %></td>
-    <td align='right'><%= product.on_hand_qty - product.on_customer_order_qty %></td>
-    <td align='right'><%= product.line_items.count %></td>
-   	<td align='right'><%= (product.on_hand_qty - product.on_customer_order_qty) - product.line_items.count %></td>
-    <td align='right'><%= number_to_currency(product.line_items.count * product.price) %></td>
-  </tr>
+    <tr>
+      <td><p class="barcode_font">*<%= product.upc %>*</p></td>
+      <td><%= product.department %></td>
+      <td><%= product.vendor %></td>
+      <td><%= link_to product.description, product_path(product) %></td>
+      <td><%= product.color %></td>
+      <td><%= product.size %></td>
+      <td align='right'><%= number_to_currency(product.price) %></td>
+      <td align='right'><%= product.on_hand_qty %></td>
+      <td align='right'><%= product.on_customer_order_qty %></td>
+      <td align='right'><%= product.on_hand_qty - product.on_customer_order_qty %></td>
+      <td align='right'><%= product.line_items.count %></td>
+     	<td align='right'><%= (product.on_hand_qty - product.on_customer_order_qty) - product.line_items.count %></td>
+      <td align='right'><%= number_to_currency(product.line_items.count * product.price) %></td>
+    </tr>
   <% end %>
-
 </table>
 
 
