@@ -9,21 +9,21 @@
 </head>
 <body padding-top: 40px;>
   <div class="nav">
-    <%= image_tag 'rocky_head.jpg' %>
+    <%= image_tag 'https://trunkclub-avatars.s3.amazonaws.com/employee/thumb/thumb_287430c545485c3444b13688bca8b137.jpg?01142013120645', size: "100x100" %>
     <%= link_to 'All Counts', rack_counts_path %> | 
     <%= link_to 'Hand vs. Scan Count', diff_rack_counts_path %> | 
     <%= link_to 'Products', products_path %> |
     <%= link_to 'Products to Adjust', diff_products_path %> |
     <%= link_to 'Dashboard', dashboards_path %>
-    <%= image_tag 'rocky_head.jpg' %>
+    <%= image_tag 'https://trunkclub-avatars.s3.amazonaws.com/employee/thumb/thumb_287430c545485c3444b13688bca8b137.jpg?01142013120645', size: "100x100" %>
   </div>
 <hr />
 
 <% if flash[:errors] && !flash[:errors].empty? then %>
 	<div class="flash error">  
-    <%= image_tag 'rocky_no.jpg' %>
+    <%= image_tag 'https://trunkclub-avatars.s3.amazonaws.com/employee/thumb/thumb_287430c545485c3444b13688bca8b137.jpg?01142013120645', size: "200x200" %>
     <%= flash[:errors] %>
-    <%= image_tag 'rocky_no.jpg' %>
+    <%= image_tag 'https://trunkclub-avatars.s3.amazonaws.com/employee/thumb/thumb_287430c545485c3444b13688bca8b137.jpg?01142013120645', size: "200x200" %>
   </div>
 <% end %>
 

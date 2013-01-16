@@ -91,20 +91,22 @@ class RackCountsController < ApplicationController
     @rack_count = RackCount.find params[:id]
     
      if params[:product_upc].empty?
-      flash[:errors] = "Rocky Says: No no. Must enter a UPC!"
+      flash[:errors] = "Dana Says: No no. Must enter a UPC!"
       redirect_to rack_count_path(@rack_count)
       return false
     end
       
     # Get the product based on UPC from the rack count POST param
-    @product = Product.find_by_upc params[:product_upc]
+    # If product_upc is less than 13 characters, left pad to 13 with zeros
+    upc = params[:product_upc].to_s.rjust(13, "0")
+    @product = Product.find_by_upc upc
     
     # Create the line_item and add product ID and rack count ID
 
     if !@product.nil?
       @rack_count.line_items.create(:product_id => @product.id)
     else
-      flash[:errors] = "Rocky Says: That product isn't in the system." 
+      flash[:errors] = "Dana Says: UPC #{upc} isn't in the system." 
     end
 
     # Go back to the rack_count/id page
