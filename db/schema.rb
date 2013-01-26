@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20130126061021) do
     t.string   "vendor"
     t.integer  "on_hand_qty"
     t.integer  "on_customer_order_qty"
-    t.integer  "cost"
+    t.float    "cost"
   end
 
   create_table "rack_counts", :force => true do |t|
