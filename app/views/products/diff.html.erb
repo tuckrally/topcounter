@@ -25,7 +25,7 @@
     <td><%= link_to product.description, product_path(product) %></td>
     <td><%= product.color %></td>
     <td><%= product.size %></td>
-    <td align='center' class='large'><%= product.cost %></td>
+    <td align='center' class='large'><%= number_to_currency(product.cost) %></td>
     <td align='center' class='large'><%= number_to_currency(product.price) %></td>
     <td align='center' class='large'><%= product.line_items.count %></td>
     <td align='center' class='large'><%= product.on_hand_qty %></td>
