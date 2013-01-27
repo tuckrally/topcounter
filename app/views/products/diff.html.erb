@@ -21,12 +21,11 @@
     <td><%= product.department %></td>
     <td><%= product.vendor %></td>
     <td><%= link_to product.description, product_path(product) %></td>
-    <td align='center' class='large'><%= number_to_currency(product.cost) %></td>
-    <td align='center' class='large'><%= number_to_currency(product.price) %></td>
+    <td><%= product.color %></td>
+    <td><%= product.size %></td>
     <td align='center' class='large'><%= product.line_items.count %></td>
     <td align='center' class='large'><%= product.on_hand_qty %></td>
     <td align='center' class='large'><%= product.line_items.count - product.on_hand_qty %></td>
-
   </tr>
   <% end %>
 
