@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
 
     # ITERATE OVER LINE ITEMS PER PRODUCT IN SQL
     @products_diff = Product.where("coalesce((select sum(1) from line_items where line_items.product_id = products.id), 0) != products.on_hand_qty").
-                      order("vendor desc, description desc, upc desc").
+                      order("vendor asc, description asc, upc asc").
                       page(params[:page]).
                       per(100)
 
