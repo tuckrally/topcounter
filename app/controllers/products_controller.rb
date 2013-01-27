@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   def index
     if params[:upc]
-      product = Product.find_by_upc params[:upc]
+      upc = params[:upc].to_s.rjust(13, "0")
+      product = Product.find_by_upc upc
       redirect_to product_path(product) if product
     else
       @products = Product.page(params[:page]).per(100)
