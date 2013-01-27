@@ -10,8 +10,6 @@
     <th>Description</th>
     <th>Color</th>
     <th>Size</th>
-    <th>Cost</th>
-    <th>Price</th>
     <th># Scanned</th>
     <th># Available (in QBPOS)</th>
     <th># Adjustment</th>
@@ -23,8 +21,6 @@
     <td><%= product.department %></td>
     <td><%= product.vendor %></td>
     <td><%= link_to product.description, product_path(product) %></td>
-    <td><%= product.color %></td>
-    <td><%= product.size %></td>
     <td align='center' class='large'><%= number_to_currency(product.cost) %></td>
     <td align='center' class='large'><%= number_to_currency(product.price) %></td>
     <td align='center' class='large'><%= product.line_items.count %></td>
