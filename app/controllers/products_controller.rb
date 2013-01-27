@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.page(params[:page]).per(100)
+    if params[:upc]
+      product = Product.find_by_upc params[:upc]
+      redirect_to product_path(product) if product
+    else
+      @products = Product.page(params[:page]).per(100)
+    end
   end
 
   def show
